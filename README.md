@@ -76,24 +76,105 @@ No presenta IA    Presenta IA
          10781          30028 
 
 Promedios y desviaciones estándar
--mean (df.limpio$numpeho)			 # [1] 3.99073
--mean (df.limpio$edadjef)			 # [1] 47.31534
--mean (df.limpio$añosedu)			 # [1] 10.89896
--mean (exp(df.limpio$ln_als))	 # [1] 593.989
--mean (exp(df.limpio$ln_alns)) # [1] 107.8948
+- mean (df.limpio$numpeho)			 # [1] 3.99073
+- mean (df.limpio$edadjef)			 # [1] 47.31534
+- mean (df.limpio$añosedu)			 # [1] 10.89896
+- mean (exp(df.limpio$ln_als))	 # [1] 593.989
+- mean (exp(df.limpio$ln_alns)) # [1] 107.8948
 
--sd (df.limpio$numpeho)			 # [1] 1.8559
--sd (df.limpio$edadjef)			 # [1] 15.10541
--sd (df.limpio$añosedu)			 # [1] 4.695239
--sd (exp(df.limpio$ln_als))	 # [1] 359.0136
--sd (exp(df.limpio$ln_alns)) # [1] 145.7636
+- sd (df.limpio$numpeho)			 # [1] 1.8559
+- sd (df.limpio$edadjef)			 # [1] 15.10541
+- sd (df.limpio$añosedu)			 # [1] 4.695239
+- sd (exp(df.limpio$ln_als))	 # [1] 359.0136
+- sd (exp(df.limpio$ln_alns)) # [1] 145.7636
 
 3. Calcula probabilidades que nos permitan entender el problema en México
 #
 
 4. Plantea hipótesis estadísticas y concluye sobre ellas para entender el problema en México
-#
+
+PLANTEAMIENTO DE LA HIPÓTESIS
+Los hogares con menor nivel socioeconómico tienden a gastar más en productos no saludables que las personas con mayores niveles socioeconómicos.
+Estimar cuanto gasto cada nivel socioecomico en alimentos saludables
+
+1) ln_als = beta0 + beta1* nse5f + e  =>   lm(formula = ln_als ~ nse5f)
+Hipótesis:
+- Ho: beta0 = 0 y beta1 = 0
+- Ha: beta0 ≠ 0 y beta1 ≠ 0
+Usando Mínimos Cuadrados Ordinarios (OLS) obtenemos la TABLA 1
+
+Como se observa en la tabla 1, el valor de p-value de cada variable es menor a 0.05 o a 0.01 (significancia estadística); por lo tanto se rechaza Ho y se acepta Ha. Se observa también que nse5fBajo no aparece, por lo que se interpreta que en este nivel socioeconómico no se gasta en alimentos saludables.
+
+2) ln_als = beta0 + beta1* ln_alns + beta2* nse5f + e  =>   lm(formula = ln_als ~ ln_alns + nse5f)
+Usando Mínimos Cuadrados Ordinarios (OLS) obtenemos la TABLA 2
+
+En la tabla 2, R2 ajustada es = 0.1826 y en la tabla 1, R2 ajustada es = 0.1279, por lo que podemos dejar el modelo con las 2 variables (ln_alns y nse5f) en lugar de una (nse5f).
+
+CONCLUSIÓN:
+Los valores de las betas de acuerdo a la hipótesis planteada se aceptan, y se observa que los coeficientes (betas) se incrementan cuando el nivel socioeconómico es mayor. Por lo tanto, de acuerdo a los datos, los hogares de mas bajo nivel socioeconómico gastan menos en alimentos saludables que los de mayor nivel socioeconómico.
 
 5. Estima un modelo de regresión, lineal o logístico, para identificar los determinantes de la inseguridad alimentaria en México
 
+Se genera un primer modelo inicial de regresión logística para analizar como influye en la inseguridad alimentaria.
+
+- logistic.general <- glm(IA ~ nse5f + área + numpeho + refin + edadjef + sexojef + añosedu +
+                          ln_als + ln_alns, data = df.limpio, family = binomial)	
+
+Conclusiones primer modelo: 
+De este primer modelo de regresión lineal, podemos concluir que a un intervalo de confianza del 95%, la variable edadjef NO es significativa para explicar a inseguridad alimentaria. 
+
+Por lo tanto, procedemos a quitarla del modelo.
+- logistic.ajustado <- glm(IA ~ nse5f + área + numpeho + refin + sexojef + añosedu +
+                          ln_als + ln_alns, data = df.limpio, family = binomial)	
+                          
+CONCLUSIONES MODELO AJUSTADO:
+De este modelo ajustado podemos concluir la siguiente ecuación de predicción siendo “y” la inseguridad alimentaria:
+
+	y = 2.9874 - 0.3703*nse5f - 0.1025*area + 0.1740*numpeho +
+		0.3975*refin + 0.1556*sexojef - 0.0547*añosedu - 
+		0.0910*ln_als - 0.1032*ln_alns + epsilon
+
+De aquí se tienen las siguientes observaciones:
+- 1.- Por cada unidad en la que aumenta el nivel socioeconómica DISMINUYE exp(0.3703) veces la probabilidad de IA
+- 2.- Por vivir en área urbana DISMINUYE exp(0.1025) veces la probabilidad de IA
+- 3.- Por cada integrante adicional en el hogar AUMENTA exp(0.1740) veces la probabilidad de IA
+- 4.- Por contar con ingreso adicional al laboral AUMENTA exp(0.3975) veces la probabilidad de IA
+- 5.- Por cada año adicional en la edad del jefe de familia AUMENTA exp(0.1556) veces la probabilidad de IA
+- 6.- Por cada año adicional de educación del jefe de familia DIMINUYE exp(0.0547) veces la probabilidad de IA
+- 7 y 8 .- El gasto en alimentos saludables o no saludables DISMINUYEN la probabilidad de IA
+
+6. Escribe tu análisis en un archivo README.me y tu código en un script de R y publica ambos en un repositorio de Github.
+
+Desde interfaz de Posit Cloud, se crea directorio de trabajo “Sesion8”, script de R “PW_Sesion8.R” y archivo “README.md”
+
+Identificación y configuración de variables globales
+- /cloud/project$ git config --global user.name "RodrigoDMB"
+- /cloud/project$ git config --global user.email "bbrorro@gmail.com"
+
+Validación de variables globales
+- /cloud/project$ git config --list
+	
+Cambio al directorio de trabajo “Sesion8”
+- /cloud/project$ cd Sesion8
+	
+Inicializar repositorio
+- /cloud/project/Sesion8$ git init
+
+Obtener estatus del repositorio
+- /cloud/project/Sesion8$ git status
+
+Agregar archivos
+- /cloud/project/Sesion8$ git add .
+
+Se realiza commit
+- /cloud/project/Sesion8$ git commit -m "Postwork Sesion8 - DS Equipo 16"
+
+Agregar origen remoto del repositorio
+- /cloud/project/Sesion8$ git remote add origin https://github.com/RodrigoDMB/BEDU_Sesion8.git
+
+Cargar contenido del repositorio local al repositorio remoto
+- /cloud/project/Sesion8$ git push -u origin main
+	
+URL del repositorio
+- https://github.com/RodrigoDMB/BEDU_Sesion8
 

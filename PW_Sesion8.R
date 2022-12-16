@@ -159,6 +159,79 @@ hist(exp(df.limpio$ln_alns),
      xlab = "$ Gasto",
      ylab = "Frecuencia")
 
+# 2. Realiza un análisis descriptivo de la información
+# Análisis descriptivo y gráfico
+# Crear histogramas de las variables cuantitativas
+hist(df.limpio$numpeho, col="blue", 
+     main = "Número de personas en el hogar", 
+     sub = "Con mu=3.99 y sd = 1.85 ", xlab = "# de Personas",
+     ylab = "Frecuencia")
+
+hist(df.limpio$edadjef, col="yellow",
+     main = "Edad del Jefe de Familia", 
+     sub = "Con mu = 47.32 y sd = 15.11",
+     xlab = "Años", ylab = "Frecuencia")
+
+hist(df.limpio$añosedu, col="red",
+     main = "Años de educación Jefe de Familia", 
+     sub = "Con mu = 10.90 y sd = 4.70",
+     xlab = "Años de educacion", ylab = "Frecuencia")
+
+hist(exp(df.limpio$ln_als), col="gray",
+     main = "Gasto en Alimentos Saludables", 
+     sub = "Con mu = 593.99 y sd = 359.01",
+     xlab = "$ Gasto", ylab = "Frecuencia")
+
+hist(exp(df.limpio$ln_alns), col="purple",
+     main = "Gasto en Alimentos NO Saludables", 
+     sub = "Con mu = 107.89 y sd= 145.76",
+     xlab = "$ Gasto", ylab = "Frecuencia")
+
+# Análisis descriptivo y gráfico
+pairs(~ numpeho + edadjef + añosedu + ln_als +
+        ln_alns, data = df, gap = 0.4, cex.labels = 1.5)  #
+
+df.select <- select(df, numpeho, edadjef, añosedu, 
+                    ln_als, ln_alns)	# Seleccionar variables significativas
+
+summary(df.select)	# Resumen
+
+round(cor(df.select),4) # Correlación
+
+# 4. Plantea hipótesis estadísticas y concluye sobre ellas para entender el problema en México
+# Preparación para calcular la estimación del gasto
+
+#Elimina filas que contengan NA en alguna columna
+df_SinNa.2 <- df_SinNa <- df[complete.cases(df),]		
+View(df_SinNa)   					# Enmascarar las variables
+
+#Categorizar las variables cualitativas
+df_SinNa$nse5f <- factor(df_SinNa$nse5f,levels= c(1:5),
+                         labels = c("Bajo","MedioBajo","Medio", "MedioAlto", "Alto") )
+
+df_SinNa$area <- factor(df_SinNa$area, levels= c(0:1), 
+                        labels = c("ZonaUrbana", "ZonaRural") )
+
+df_SinNa$refin <- factor(df_SinNa$refin, levels= c(0:1), 
+                         labels = c("No","Si") )
+
+df_SinNa$sexojef <- factor(df_SinNa$sexojef, levels= c(0:1), 
+                           labels = c("Hombre","Mujer") )
+
+df_SinNa$IA <- factor(df_SinNa$IA, levels= c(0:1), 
+                      labels = c("NoP_IA","P_IA") )
+
+attach(df_SinNa)					# Agregar variables a la ruta de búsqueda
+
+# Estimar cuanto gasto cada nivel socioeconómico en alimentos saludables 
+# utilizando el método de Mínimos Cuadrados Ordinarios (OLS)
+
+#ln_als = beta0 + beta1*nse5f + e 				#ln_als = beta0 + beta1*n_alns + beta2*nse5f + e 
+
+m1 <- lm(ln_als ~ nse5f) ;					m3 <- lm(ln_als ~ ln_alns + nse5f)
+
+summary(m1)		;				summary(m3)
+
 
 #Modelo de Regresión logística
 

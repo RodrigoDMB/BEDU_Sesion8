@@ -47,7 +47,7 @@ Origen de los datos:
 Supuesto:
 - Los hogares con menor nivel socioeconómico tienden a gastar más en productos no saludables que las personas con mayores niveles socioeconómicos y que esto, entre otros determinantes, lleva a que un hogar presente cierta inseguridad alimentaria.
 
-2. Realiza un análisis descriptivo de la información
+# 2. Realiza un análisis descriptivo de la información
 Análisis descriptivo y gráfico
 - Existen 5 variables cuantitativas a las que se les puede correr un análisis descriptivo; estas variables son:
 	1.- numpeho (Número de persona en el hogar)
@@ -88,7 +88,7 @@ Promedios y desviaciones estándar
 - sd (exp(df.limpio$ln_als))	 # [1] 359.0136
 - sd (exp(df.limpio$ln_alns)) # [1] 145.7636
 
-3. Calcula probabilidades que nos permitan entender el problema en México
+# 3. Calcula probabilidades que nos permitan entender el problema en México
 
 Leer el archivo fuente de datos.
 Limpiar los datos de NA, datos no existentes y dar formato adecuado.
@@ -119,7 +119,7 @@ En cambio si quiero saber la probabilidad e encontrar por lo menos 65 hogares o 
 - Esta probabilidad es del 89.16%
 
 
-4. Plantea hipótesis estadísticas y concluye sobre ellas para entender el problema en México
+# 4. Plantea hipótesis estadísticas y concluye sobre ellas para entender el problema en México
 
 PLANTEAMIENTO DE LA HIPÓTESIS
 Los hogares con menor nivel socioeconómico tienden a gastar más en productos no saludables que las personas con mayores niveles socioeconómicos.
@@ -169,7 +169,7 @@ En la tabla 2, R2 ajustada es = 0.1826 y en la tabla 1, R2 ajustada es = 0.1279,
 CONCLUSIÓN:
 Los valores de las betas de acuerdo a la hipótesis planteada se aceptan, y se observa que los coeficientes (betas) se incrementan cuando el nivel socioeconómico es mayor. Por lo tanto, de acuerdo a los datos, los hogares de mas bajo nivel socioeconómico gastan menos en alimentos saludables que los de mayor nivel socioeconómico.
 
-5. Estima un modelo de regresión, lineal o logístico, para identificar los determinantes de la inseguridad alimentaria en México
+# 5. Estima un modelo de regresión, lineal o logístico, para identificar los determinantes de la inseguridad alimentaria en México
 
 Se genera un primer modelo inicial de regresión logística para analizar como influye en la inseguridad alimentaria.
 
@@ -199,7 +199,7 @@ De aquí se tienen las siguientes observaciones:
 - 6.- Por cada año adicional de educación del jefe de familia DIMINUYE exp(0.0547) veces la probabilidad de IA
 - 7 y 8 .- El gasto en alimentos saludables o no saludables DISMINUYEN la probabilidad de IA
 
-6. Escribe tu análisis en un archivo README.me y tu código en un script de R y publica ambos en un repositorio de Github.
+# 6. Escribe tu análisis en un archivo README.me y tu código en un script de R y publica ambos en un repositorio de Github.
 
 Desde interfaz de Posit Cloud, se crea directorio de trabajo “Sesion8”, script de R “PW_Sesion8.R” y archivo “README.md”
 

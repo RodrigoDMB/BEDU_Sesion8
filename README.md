@@ -94,8 +94,8 @@ Leer el archivo fuente de datos.
 Limpiar los datos de NA, datos no existentes y dar formato adecuado.
 
 Generar tabla de frecuencias
-- 0	    1 
-- 5853  14427 
+- 0	-    1 
+- 5853 -  14427 
 
 La probabilidad de que un hogar viva en Inseguridad Alimentaria es la media o valor esperado
 - mean(df.limpio$IA)				# [1] 0.7113905

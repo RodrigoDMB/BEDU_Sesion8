@@ -33,7 +33,7 @@ La base de datos contiene las siguientes variables:
 - ln_alns (Logaritmo natural del gasto en alimentos no saludables)
 - IA (Inseguridad alimentaria en el hogar): 0 "No presenta IA", 1 "Presenta IA“
 
-1. Planteamiento del problema
+# 1. Planteamiento del problema
 Un centro de salud nutricional quiere realizar un análisis estadístico y de probabilidad para entender y determinar la tendencia de gasto en alimentos, de los hogares en la población Mexicana, así como generar un modelo que permita identificar los determinantes socioeconómicos de la inseguridad alimentaria. 
 	
 Se tiene interés en conocer:

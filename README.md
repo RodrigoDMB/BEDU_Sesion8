@@ -129,12 +129,38 @@ Estimar cuanto gasto cada nivel socioecomico en alimentos saludables
 Hipótesis:
 - Ho: beta0 = 0 y beta1 = 0
 - Ha: beta0 ≠ 0 y beta1 ≠ 0
-Usando Mínimos Cuadrados Ordinarios (OLS) obtenemos la TABLA 1
+Usando Mínimos Cuadrados Ordinarios (OLS) obtenemos la tabla 1.
+
+TABLA 1
+Coeficientes:
+                 Estimate    	Std.	      t value    Pr(>|t|)
+		             (beta)	      Error    
+(Intercept)      5.80160     0.01079      537.80      <2e-16 ***
+nse5fMedioBajo   0.23075     0.01489      15.50      < 2e-16 ***  Destina menor gasto
+nse5fMedio       0.37640     0.01472      25.57      < 2e-16 ***
+nse5fMedioAlto   0.52521     0.01453      36.15      < 2e-16 ***
+nse5fAlto        0.73397     0.01457      50.39      < 2e-16 ***   Destina mayor gasto 
+Residual standard error: 0.643 on 20275 degrees of freedom
+Multiple R-squared:  0.1281,	Adjusted R-squared:  0.1279 
+F-statistic: 744.5 on 4 and 20275 DF,  p-value: < 2.2e-16
 
 Como se observa en la tabla 1, el valor de p-value de cada variable es menor a 0.05 o a 0.01 (significancia estadística); por lo tanto se rechaza Ho y se acepta Ha. Se observa también que nse5fBajo no aparece, por lo que se interpreta que en este nivel socioeconómico no se gasta en alimentos saludables.
 
 2) ln_als = beta0 + beta1* ln_alns + beta2* nse5f + e  =>   lm(formula = ln_als ~ ln_alns + nse5f)
-Usando Mínimos Cuadrados Ordinarios (OLS) obtenemos la TABLA 2
+Usando Mínimos Cuadrados Ordinarios (OLS) obtenemos la tabla 2.
+
+TABLA 2
+               	   	 Estimate   	Std. 	      t value     Pr(>|t|)
+		                 (beta)    	  Error
+(Intercept)      	   5.203968     0.019289    269.79       < 2e-16 ***
+ln_alns        	     0.162030   	0.004397     36.85       < 2e-16 ***
+nse5fMedioBajo  	   0.194880   	0.014447     13.49       < 2e-16 ***   Destina menor gasto
+nse5fMedio    	     0.317214   	0.014343     22.12       < 2e-16 ***
+nse5fMedioAlto     	 0.437112   	0.014268     30.64       < 2e-16 ***
+nse5fAlto      	     0.584495   	0.014673     39.84       < 2e-16 ***   Destina mayor gasto
+Residual standard error: 0.6225 on 20274 degrees of freedom
+Multiple R-squared:  0.1828,	Adjusted R-squared:  0.1826 
+F-statistic: 907.1 on 5 and 20274 DF,  p-value: < 2.2e-16
 
 En la tabla 2, R2 ajustada es = 0.1826 y en la tabla 1, R2 ajustada es = 0.1279, por lo que podemos dejar el modelo con las 2 variables (ln_alns y nse5f) en lugar de una (nse5f).
 

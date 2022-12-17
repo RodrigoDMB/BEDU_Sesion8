@@ -131,17 +131,18 @@ Hipótesis:
 - Ha: beta0 ≠ 0 y beta1 ≠ 0
 Usando Mínimos Cuadrados Ordinarios (OLS) obtenemos la tabla 1.
 
-TABLA 1
-| Coeficientes | Estimate | Std.	Error | t value | Pr(>|t|) |
+**TABLA 1**
+| Coeficientes | Estimate | Std.	Error | t value | Pr(>t) |
 | --- | --- | --- | --- | --- |
-| (Intercept)   |   5.80160,    | 0.01079,   |   537.80,   |   <2e-16 *** |
-| nse5fMedioBajo  | 0.23075,   |  0.01489,   |   15.50,    |  < 2e-16 ***  Destina menor gasto |
-| nse5fMedio     |  0.37640,  |   0.01472,   |   25.57,    |  < 2e-16 *** |
-| nse5fMedioAlto |  0.52521,  |  0.01453,    |  36.15,     | < 2e-16 *** |
-| nse5fAlto      |  0.73397,  |   0.01457,   |   50.39,    |  < 2e-16 ***  Destina mayor gasto  |
-| Residual standard error: 0.643 on 20275 degrees of freedom
-| Multiple R-squared:  0.1281,	Adjusted R-squared:  0.1279 
-| F-statistic: 744.5 on 4 and 20275 DF,  p-value: < 2.2e-16
+| (Intercept) | 5.80160,  | 0.01079,  | 537.80, | <2e-16 *** |
+| nse5fMedioBajo | 0.23075, | 0.01489,  | 15.50,  | < 2e-16 *** Destina menor gasto |
+| nse5fMedio     | 0.37640, | 0.01472,  | 25.57,  | < 2e-16 *** |
+| nse5fMedioAlto | 0.52521, | 0.01453,  | 36.15,  | < 2e-16 *** |
+| nse5fAlto      | 0.73397, | 0.01457,  | 50.39,  | < 2e-16 ***  Destina mayor gasto  |
+
+Residual standard error: 0.643 on 20275 degrees of freedom
+Multiple R-squared:  0.1281,	Adjusted R-squared:  0.1279 
+F-statistic: 744.5 on 4 and 20275 DF,  p-value: < 2.2e-16
 
 
 - Estimate  /  Std.	Error  /  t value  /  Pr(>|t|)

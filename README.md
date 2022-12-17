@@ -150,8 +150,8 @@ Como se observa en la tabla 1, el valor de p-value de cada variable es menor a 0
 Usando Mínimos Cuadrados Ordinarios (OLS) obtenemos la tabla 2.
 
 TABLA 2
--                	   	 Estimate   	Std. 	      t value     Pr(>|t|)
-- 		                 (beta)    	  Error
+- Estimate  /  Std. 	/   t value  /  Pr(>|t|)
+- (beta)    /	  Error
 - (Intercept)      	   5.203968     0.019289    269.79       < 2e-16 ***
 - ln_alns        	     0.162030   	0.004397     36.85       < 2e-16 ***
 - nse5fMedioBajo  	   0.194880   	0.014447     13.49       < 2e-16 ***   Destina menor gasto

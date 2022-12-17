@@ -134,11 +134,11 @@ Usando Mínimos Cuadrados Ordinarios (OLS) obtenemos la tabla 1.
 **TABLA 1**
 | Coeficientes | Estimate | Std.	Error | t value | Pr(>t) |
 | --- | --- | --- | --- | --- |
-| (Intercept) | 5.80160,  | 0.01079,  | 537.80, | <2e-16 *** |
-| nse5fMedioBajo | 0.23075, | 0.01489,  | 15.50,  | < 2e-16 *** Destina menor gasto |
-| nse5fMedio     | 0.37640, | 0.01472,  | 25.57,  | < 2e-16 *** |
-| nse5fMedioAlto | 0.52521, | 0.01453,  | 36.15,  | < 2e-16 *** |
-| nse5fAlto      | 0.73397, | 0.01457,  | 50.39,  | < 2e-16 ***  Destina mayor gasto  |
+| (Intercept) | 5.80160,  | 0.01079,  | 537.80 | <2e-16 *** |
+| nse5fMedioBajo | 0.23075 | 0.01489  | 15.50  | < 2e-16 *** Destina menor gasto |
+| nse5fMedio     | 0.37640 | 0.01472  | 25.57  | < 2e-16 *** |
+| nse5fMedioAlto | 0.52521 | 0.01453  | 36.15  | < 2e-16 *** |
+| nse5fAlto      | 0.73397 | 0.01457  | 50.39  | < 2e-16 ***  Destina mayor gasto  |
 
 Residual standard error: 0.643 on 20275 degrees of freedom
 Multiple R-squared:  0.1281,	Adjusted R-squared:  0.1279 
@@ -151,12 +151,12 @@ Usando Mínimos Cuadrados Ordinarios (OLS) obtenemos la tabla 2.
 
 **TABLA 2**
 | Coeficiente | Estimate | Std. Error	| t value | Pr(>t) |
-| (Intercept)      |	   5.203968, |   0.019289, |   269.79, |      < 2e-16 *** |
-| ln_alns        	 |    0.162030,  | 	0.004397, |    36.85,  |     < 2e-16 *** |
-| nse5fMedioBajo  |	   0.194880,  | 	0.014447, |    13.49,  |     < 2e-16 ***   Destina menor gasto |
-| nse5fMedio    	 |    0.317214, |  	0.014343, |    22.12,  |     < 2e-16 *** |
-| nse5fMedioAlto   |  	 0.437112,  | 	0.014268, |    30.64, |      < 2e-16 *** |
-| nse5fAlto      	 |    0.584495, |  	0.014673, |    39.84,  |     < 2e-16 ***   Destina mayor gasto |
+| (Intercept) | 5.203968, | 0.019289, | 269.79, | < 2e-16 *** |
+| ln_alns | 0.162030 | 0.004397, |    36.85,  |     < 2e-16 *** |
+| nse5fMedioBajo  |	0.194880,  | 0.014447, |    13.49,  |     < 2e-16 ***   Destina menor gasto |
+| nse5fMedio    	 | 0.317214, | 0.014343, |    22.12,  |     < 2e-16 *** |
+| nse5fMedioAlto   | 0.437112,  | 0.014268, |    30.64, |      < 2e-16 *** |
+| nse5fAlto      	 | 0.584495, | 0.014673, |    39.84,  |     < 2e-16 ***   Destina mayor gasto |
 
 Residual standard error: 0.6225 on 20274 degrees of freedom
 Multiple R-squared:  0.1828,	Adjusted R-squared:  0.1826 

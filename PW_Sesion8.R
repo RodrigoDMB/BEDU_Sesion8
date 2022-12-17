@@ -198,6 +198,54 @@ summary(df.select)	# Resumen
 
 round(cor(df.select),4) # Correlación
 
+#3.- Calculo de probabilidades
+"Leer el archivo fuente de datos"
+df <- read.csv("https://raw.githubusercontent.com/beduExpert/Programacion-R-Santander-2022/main/Sesion-08/Postwork/inseguridad_alimentaria_bedu.csv")
+
+"Limpiar los datos de NA y datos no existentes"
+df.limpio <- df[complete.cases(df),]
+View(df.limpio)
+table(df.limpio$IA)
+
+#La probabilidad de que un hogar viva en Inseguridad Alimentaria es la media o valor esperado
+
+mean(df.limpio$IA)
+
+"Podemos concluir entonces que la probabilidad de un evento 'exitoso' es decir
+que un hogar viva en Inseguridad Alimentaria es que p=0.7113"
+
+"Ahora grafiquemos una distribucion binimial usando ese valor de p"
+binom <- rbinom(n=10000,size=10,prob=0.7113)
+
+barplot(table(binom)/length(binom),
+        main = "Distribución Binomial", 
+        ylab = "Probabilidad",
+        xlab = "# hogares en Inseguridad Alimentaria de 10 visitas")
+
+"Vemos que tiene un sesgo hacia la izquierda"
+
+"Ahora grafiquemos la funcion de probabilidad de la variable de inseguridad alimentaria
+en un supuesto de 100 visitas a hogares"
+
+x<-1:100
+plot(dbinom(x, size = 100, prob = 0.7113), type = "h", lwd = 2,
+     main = "Función de probabilidad binomial IA",
+     ylab = "P(X = x)", xlab = "Número de hogares con IA en 100 visitas")
+
+"Esta gráfica la podemos interpretar de la siguiente manera para tratar de explicar el problema
+de la Insegurida Alimentaria en México: Al hacer una visita a 100 hogares en el país
+encontraremos entre 60 y 80 hogares en esta condicion "
+
+"Si queremos calcular la probabilidad de encontrar sólo 50 o menos hogares en IA en México 
+en una visita a 100 hogares,corremos la siguiente función" 
+pbinom(q=50,size=100,p=0.7113,lower.tail=TRUE)
+"Esta probabilidad es de sólo 0.0006958%"
+
+"En cambio si quiero saber la probabilidad e encontrar por lo menos 65 hogares o mas
+en Inseguridad alimentaria la función es la siguiente"
+pbinom(q=65,size=100,p=0.7113,lower.tail=FALSE)
+"Esta probabilidad es del 89.16%"
+
 # 4. Plantea hipótesis estadísticas y concluye sobre ellas para entender el problema en México
 # Preparación para calcular la estimación del gasto
 
@@ -233,7 +281,7 @@ m1 <- lm(ln_als ~ nse5f) ;					m3 <- lm(ln_als ~ ln_alns + nse5f)
 summary(m1)		;				summary(m3)
 
 
-#Modelo de Regresión logística
+#5 Modelo de Regresión logística
 
 "Se genera un modelo inicial de regresión logística para analizar como influye en la inseguridad
 alimentaria" 

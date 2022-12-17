@@ -89,7 +89,34 @@ Promedios y desviaciones estándar
 - sd (exp(df.limpio$ln_alns)) # [1] 145.7636
 
 3. Calcula probabilidades que nos permitan entender el problema en México
-#
+
+Leer el archivo fuente de datos
+Limpiar los datos de NA, datos no existentes y dar formato adecuado
+Generar tabla de frecuencias
+ 	# 0	1 
+	# 5853 14427 
+
+La probabilidad de que un hogar viva en Inseguridad Alimentaria es la media o valor esperado
+- mean(df.limpio$IA)				# [1] 0.7113905
+
+Podemos concluir entonces que la probabilidad de un evento 'exitoso‘, es decir, 
+que un hogar viva en Inseguridad Alimentaria es que p=0.7113.
+
+Graficamos una distribucion binimial usando ese valor de p.
+- Al crear gráfica de barras, vemos que tiene un sesgo hacia la izquierda.
+
+Ahora graficamos la función de probabilidad de la variable de inseguridad alimentaria en un supuesto de 100 visitas a hogares.
+
+- Al interpretar la gráfica resultante, vemos que para tratar de explicar el problema de la Inseguridad Alimentaria en México, podemos concluir que al hacer una visita a 100 hogares en el país, encontraremos entre 60 y 80 hogares en esta condición.
+
+Si queremos calcular la probabilidad de encontrar sólo 50 o menos hogares con IA en México, en una visita a 100 hogares, corremos la siguiente función:" 
+- pbinom(q=50,size=100,p=0.7113,lower.tail=TRUE)			# [1] 6.958765e-06
+- Esta probabilidad es de sólo 0.0006958%
+
+En cambio si quiero saber la probabilidad e encontrar por lo menos 65 hogares o más, con Inseguridad alimentaria, la función es la siguiente:
+- pbinom(q=65,size=100,p=0.7113,lower.tail=FALSE)		# [1] 0.891633
+- Esta probabilidad es del 89.16%
+
 
 4. Plantea hipótesis estadísticas y concluye sobre ellas para entender el problema en México
 

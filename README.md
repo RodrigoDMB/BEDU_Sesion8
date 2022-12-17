@@ -151,7 +151,7 @@ Usando Mínimos Cuadrados Ordinarios (OLS) obtenemos la tabla 2.
 
 **TABLA 2**
 
-| Coeficiente | Estimate | Std. Error	| t value | Pr(>|t|) |
+| Coeficiente | Estimate | Std. Error	| t value | Pr(>t) |
 | --- | --- | --- | --- | --- |
 | (Intercept) | 5.203968 | 0.019289 | 269.79 | < 2e-16 *** |
 | ln_alns | 0.162030 | 0.004397 | 36.85 | < 2e-16 *** |
